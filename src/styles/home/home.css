@@ -1,0 +1,10 @@
+.background {
+  background-image: url(https://imgur.com/dbFJ62q);
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: red;
+  box-sizing: border-box;
+}
