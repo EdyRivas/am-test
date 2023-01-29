@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState, React } from "react";
 import './../styles/components/homeComponent/homeComponent.sass'
 import database from './../adapters/database.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,38 +17,52 @@ const click = (id) => {
   }
 
 }
-const filterClick = (id) => {
-  let btn = document.getElementById(id)
-  if (!btn.classList.contains('clicked')) {
-    if (id === 'est') {
-      let sta = document.getElementById('sta')
-      if (sta.classList.contains('clicked')) {
-        sta.style.backgroundColor = ''
-        sta.classList.remove('clicked')
-      }
-    } else {
-      let est = document.getElementById('est')
-      if (est.classList.contains('clicked')) {
-        est.style.backgroundColor = ''
-        est.classList.remove('clicked')
-      }
-    }
-    btn.style.backgroundColor = '#6B63B5'
-    btn.classList.add('clicked')
-    // else {
-    //   btn.style.backgroundColor = ''
-    //   btn.classList.remove('clicked')
-    // }
-  }
-}
-const Cards = () => {
-  console.log(database)
 
-  let a = []
-  database.characters.forEach((character) => {
+
+const Cards = () => {
+
+  const [arr, setArr] = useState([])
+
+  const filterClick = (id) => {
+    let btn = document.getElementById(id);
+    if (!btn.classList.contains('clicked')) {
+      if (id === 'est') {
+        setArr(database.students)
+        let sta = document.getElementById('sta')
+        if (sta.classList.contains('clicked')) {
+          sta.style.backgroundColor = ''
+          sta.classList.remove('clicked')
+        }
+      } else {
+        setArr(database.staff)
+        let est = document.getElementById('est')
+        if (est.classList.contains('clicked')) {
+          est.style.backgroundColor = ''
+          est.classList.remove('clicked')
+        }
+      }
+      btn.style.backgroundColor = '#6B63B5'
+      btn.classList.add('clicked')
+      // else {
+      //   btn.style.backgroundColor = ''
+      //   btn.classList.remove('clicked')
+      // }
+    } else {
+      btn.style.backgroundColor = '';
+      btn.classList.remove('clicked');
+      setArr(database.characters)
+    }
+  }
+
+  useEffect(() => {
+    setArr(database.characters)
+  }, [])
+
+  let cards = []
+  arr.forEach((character) => {
     let idCompuesta = character.actor.split(' ').join('');
     let icon = 'icon-' + idCompuesta
-    a.push(
+    cards.push(
       <div className="half">
         <div className={character.alive ? "cart" : "cart dead"}>
           <div className={character.house + ' imgcont'}>
@@ -88,8 +102,6 @@ const Cards = () => {
           </div>
         </div>
       </div>
-
-
     )
   })
   return (
@@ -109,10 +121,12 @@ const Cards = () => {
       </div>
       <div className="takeRest">
         <div className="cont">
-          {a}
+          {cards}
         </div>
       </div>
+
     </div>
+
   )
 }
 export default Cards;
