@@ -75,10 +75,10 @@ const Cards = () => {
           <img className='hTit' src="https://i.imgur.com/c9RjklN.png" alt="" />
         </div>
         <div className="buttons">
-          <div className="btnHalf">
-            <button className='bnt'>ESTUDIANTES</button>
+          <div className="btnHalf right">
+            <button className='bntStu'>ESTUDIANTES</button>
           </div>
-          <div className="btnHalf">
+          <div className="btnHalf left">
             <button className='btnSt'>STAFF</button>
           </div>
         </div>

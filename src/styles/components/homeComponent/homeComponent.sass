@@ -39,9 +39,11 @@ h1,h2,h3,h4,h5,h6, p
     margin: 0!important
 .contGen
     box-sizing: border-box
-    overflow: auto
+    // overflow: auto
     max-height: 100%
     width: 100%
+    display: flex
+    flex-direction: column  
 .img
     object-fit: cover
     object-position: center cener
@@ -89,7 +91,7 @@ h1,h2,h3,h4,h5,h6, p
     align-items: center
 .hTit
     width: 200px
-.btnSt,.bnt
+.btnSt,.bntStu
     border:2px solid #6B63B5
     outline: none
     color: white
@@ -98,12 +100,27 @@ h1,h2,h3,h4,h5,h6, p
     height: 50px
     cursor: pointer
     font-family: Open Sans
+    transition: all ease .2s
+    border-radius: 3px
+.btnSt:hover,.bntStu:hover
+    background-color:  rgba(107, 99, 181, 0.6)
+
+
 .buttons
     display: flex
+
 .btnHalf
     width: 50%
-    justify-content: center
     display: flex
+    padding: 20px
+    box-sizing: border-box
+.left
+    justify-content: left
+.right
+    justify-content: right
+.takeRest
+    flex: 1
+    overflow: auto
 .Gryffindor
     background: linear-gradient(135deg, #FF0000 0%, #FED482 100%)
 .Slytherin
@@ -132,4 +149,3 @@ h1,h2,h3,h4,h5,h6, p
         flex-wrap: wrap
     .half
         padding: 10px 5px
-x
