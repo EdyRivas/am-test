@@ -36,7 +36,6 @@
     background-color: #6B63B5
     border-radius: 0 0 7px 7px
     transitaion: all ease 1s
-    box-shadow: 0 0 3px 2px #1010105b
     z-index: 1
 .btnsCont
     background-color: #6B63B5
@@ -58,4 +57,21 @@
     
     to 
         height: 0
-
+@media only screen and (max-width:700px)
+    .btnsComt
+        bottom: 9px !important
+        left: 0
+        display: flex
+        justify-content: center
+        top: auto
+        right: auto
+        width: 100%
+    .btnsCont,.listCont
+        border-radius:7px 7px 0 0
+    .listCont
+        top: auto
+        bottom: 0
+    // .btnL
+    //     border-radius: 7px 0 0 0 !important
+    // .btnR
+    //     border-radius: 0 7px 0 0  !important
