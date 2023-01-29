@@ -17,6 +17,30 @@ const click = (id) => {
   }
 
 }
+const filterClick = (id) => {
+  let btn = document.getElementById(id)
+  if (!btn.classList.contains('clicked')) {
+    if (id === 'est') {
+      let sta = document.getElementById('sta')
+      if (sta.classList.contains('clicked')) {
+        sta.style.backgroundColor = ''
+        sta.classList.remove('clicked')
+      }
+    } else {
+      let est = document.getElementById('est')
+      if (est.classList.contains('clicked')) {
+        est.style.backgroundColor = ''
+        est.classList.remove('clicked')
+      }
+    }
+    btn.style.backgroundColor = '#6B63B5'
+    btn.classList.add('clicked')
+    // else {
+    //   btn.style.backgroundColor = ''
+    //   btn.classList.remove('clicked')
+    // }
+  }
+}
 const Cards = () => {
   console.log(database)
 
@@ -26,7 +50,7 @@ const Cards = () => {
     let icon = 'icon-' + idCompuesta
     a.push(
       <div className="half">
-        <div className="cart">
+        <div className={character.alive ? "cart" : "cart dead"}>
           <div className={character.house + ' imgcont'}>
             <div className="imgRadious">
 
@@ -43,7 +67,7 @@ const Cards = () => {
               </button>
             </div>
             <div className="rowCont jcc">
-              <h1 className='name'>{character.name}</h1>
+              <h1 className='name'>{character.alive ? '' : '✞ '}{character.name}</h1>
             </div>
             <div className="rowCont">
               <p className="bold">Cumpleaños:</p>
@@ -76,10 +100,10 @@ const Cards = () => {
         </div>
         <div className="buttons">
           <div className="btnHalf right">
-            <button className='bntStu'>ESTUDIANTES</button>
+            <button id='est' className='bntStu' onClick={(e) => { filterClick('est') }} >ESTUDIANTES</button>
           </div>
           <div className="btnHalf left">
-            <button className='btnSt'>STAFF</button>
+            <button id='sta' className='btnSt' onClick={(e) => { filterClick('sta') }}>STAFF</button>
           </div>
         </div>
       </div>
