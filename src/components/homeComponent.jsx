@@ -4,12 +4,26 @@ import database from './../adapters/database.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 
+const click = (id) => {
+  let icon = document.getElementById(id)
+  let value = icon.value === '0' ? false : true;
+  if (!value) {
+    icon.style.color = '#333333';
+    icon.value = '1';
+  }
+  else {
+    icon.style.color = '#9999A2';
+    icon.value = '0';
+  }
 
+}
 const Cards = () => {
   console.log(database)
+
   let a = []
   database.characters.forEach((character) => {
-    let idCompuesta = character.actor.split(' ').join;
+    let idCompuesta = character.actor.split(' ').join('');
+    let icon = 'icon-' + idCompuesta
     a.push(
       <div className="half">
         <div className="cart">
@@ -22,28 +36,30 @@ const Cards = () => {
           <div className="rest">
             <div className="rowCont iconCont">
               <p className="smal">
-                {character.alive ? 'VIVO' : 'FINADO'}/{character.hogwartsStudent ? 'ESTUDIANTE' : 'STAFF'}
+                {character.alive ? 'VIVO ' : 'FINADO '}/{character.hogwartsStudent ? ' ESTUDIANTE' : ' STAFF'}
               </p>
-              <FontAwesomeIcon onClick='favClick()' className='icon' icon={faBookmark} id={'icon-' + idCompuesta} />
+              <button id={icon} onClick={(e) => { click(icon) }} className='btnFav' value='0'>
+                <FontAwesomeIcon icon={faBookmark} />
+              </button>
             </div>
             <div className="rowCont jcc">
               <h1 className='name'>{character.name}</h1>
             </div>
             <div className="rowCont">
               <p className="bold">Cumpleaños:</p>
-              <p>data</p>
+              <p className="data">{character.dateOfBirth = character.dateOfBirth !== '' ? character.dateOfBirth : 'Desconosido'}</p>
             </div>
             <div className="rowCont">
               <p className="bold">Genero:</p>
-              <p>data</p>
+              <p className="data">{character.gender.charAt(0).toUpperCase() + character.gender.slice(1)}</p>
             </div>
             <div className="rowCont">
               <p className="bold">Color de ojos:</p>
-              <p>data</p>
+              <p className="data">{character.eyeColour.charAt(0).toUpperCase() + character.eyeColour.slice(1)}</p>
             </div>
             <div className="rowCont">
               <p className="bold">Color de pelo:</p>
-              <p>data</p>
+              <p className="data">{character.hairColour.charAt(0).toUpperCase() + character.hairColour.slice(1)}</p>
             </div>
           </div>
         </div>
@@ -55,8 +71,17 @@ const Cards = () => {
   return (
     <div className="contGen">
       <div className='buttonsSec'>
-        <button className='bnt'>ESTUDIANTES</button>
-        <button className='btnSt'>STAFF</button>
+        <div className="imgCont">
+          <img className='hTit' src="https://i.imgur.com/c9RjklN.png" alt="" />
+        </div>
+        <div className="buttons">
+          <div className="btnHalf">
+            <button className='bnt'>ESTUDIANTES</button>
+          </div>
+          <div className="btnHalf">
+            <button className='btnSt'>STAFF</button>
+          </div>
+        </div>
       </div>
       <div className="takeRest">
         <div className="cont">
