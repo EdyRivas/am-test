@@ -7,8 +7,7 @@ const TopBar = () => {
 
   document.addEventListener('click', (event) => {
     let toggle = document.getElementById('toggle');
-    debugger
-    if (event.target.id == 'openFav') {
+    if (event.target.id === 'openFav') {
       if (!toggle.classList.contains('show')) {
         toggle.style.animation = '.4s ease open forwards';
         toggle.classList.add('show');
@@ -18,10 +17,11 @@ const TopBar = () => {
         return
       }
     }
-    if (event.target.id != 'toggle' && toggle.classList.contains('show')) {
-      toggle.classList.remove('show');
-      toggle.style.animation = '.4s ease close forwards';
-    }
+    if (toggle)
+      if (event.target.id !== 'toggle' && toggle.classList.contains('show')) {
+        toggle.classList.remove('show');
+        toggle.style.animation = '.4s ease close forwards';
+      }
   });
   return (
     <div className="btnsComt">
