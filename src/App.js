@@ -3,11 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 
 function App() {
-    return ( 
-        <BrowserRouter >
-        <Routes >
-            <Route path="/" element={<Home />} />
-        </Routes>  
+    return (
+        <BrowserRouter basename="http://edyrivas.github.io/am-test">
+            <Routes >
+                <Route path="/" element={<Home />} />
+            </Routes>
         </BrowserRouter >
     );
 }
