@@ -8,6 +8,7 @@ function App() {
             <Routes >
                 <Route path="/am-test" element={<Home />} />
             </Routes>
+            <Route path="*" element={<Home />} />
         </BrowserRouter >
     );
 }
