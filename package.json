@@ -1,7 +1,7 @@
 {
     "name": "am-test",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
     "homepage": "https://edyrivas.github.io/am-test",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.2.1",
