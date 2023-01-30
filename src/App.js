@@ -4,9 +4,9 @@ import Home from "./pages/home";
 
 function App() {
     return (
-        <BrowserRouter basename="http://edyrivas.github.io/am-test">
+        <BrowserRouter>
             <Routes >
-                <Route path="/" element={<Home />} />
+                <Route path="/am-test" element={<Home />} />
             </Routes>
         </BrowserRouter >
     );
